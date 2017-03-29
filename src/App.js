@@ -1,24 +1,22 @@
 //import liraries
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers';
+import { Header } from './components/common';
+import LibraryList from './components/LibraryList';
 
 // create a component
 const App = () => {
     return (
-        <View style={styles.container}>
-            <Text>App</Text>
-        </View>
+        <Provider store={createStore(reducers)}>
+            <View style={{ flex: 1 }}>
+                <Header headerText="Tech Stack" />
+                <LibraryList />
+            </View>
+        </Provider>
     );
-};
-
-// define your styles
-const styles = {
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#2c3e50',
-    },
 };
 
 //make this component available to the app
